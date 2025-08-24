@@ -1,14 +1,15 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
-<H3>EX. NO.1</H3>
-<H3>DATE</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
+
+# Name : Bharath Raj P
+# Reg  : 212223230031
+# Date : 19/8/2025 
 
 ## AIM:
 
 To perform Data preprocessing in a data set downloaded from Kaggle
 
 ## EQUIPMENTS REQUIRED:
+
 Hardware – PCs
 Anaconda – Python 3.7 Installation / Google Colab /Jupiter Notebook
 
@@ -29,20 +30,83 @@ Another aspect is that the data set should be formatted in such a way that more 
 
 
 ## ALGORITHM:
-STEP 1:Importing the libraries<BR>
-STEP 2:Importing the dataset<BR>
-STEP 3:Taking care of missing data<BR>
-STEP 4:Encoding categorical data<BR>
-STEP 5:Normalizing the data<BR>
-STEP 6:Splitting the data into test and train<BR>
+# STEP 1:Importing the libraries<BR>
+# STEP 2:Importing the dataset<BR>
+# STEP 3:Taking care of missing data<BR>
+# STEP 4:Encoding categorical data<BR>
+# STEP 5:Normalizing the data<BR>
+# STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
 
-
+```
+import pandas as pd
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+```
+```
+df = pd.read_csv("Churn_Modelling.csv")
+print(df)
+```
+```
+print(df.isnull().sum())
+```
+```
+df.duplicated().sum
+```
+```
+df.describe()
+```
+```
+df= df.drop(['Surname', 'Geography','Gender'], axis=1)
+print(df)
+```
+```
+scaler = MinMaxScaler()
+df1 = pd.DataFrame(scaler.fit_transform(df), columns=df.columns)
+print(df1)
+```
+```
+X = df1.drop('Exited', axis=1)
+y = df1['Exited']
+print(X,y)
+```
+```
+X_train ,X_test ,y_train,y_test=train_test_split(X,y,test_size=0.2)
+```
+```
+print("X_train:\n", X_train)
+print("X_test:\n", X_test)
+print("y_train:\n", y_train)
+print("y_test:\n", y_test)
+```
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
 
+### Reading Dataset:
+![alt text](output/read.png)
+
+### Missing values:
+![alt text](output/missing.png)
+
+### Duplicate values:
+![alt text](output/duplicate.png)
+
+### Outlier Detection:
+![alt text](output/outlier.png)
+
+### Remove UUnnecessary Columns:
+![alt text](output/remove.png)
+
+### Normalize:
+![alt text](output/scale.png)
+
+### X and Y Columns:
+![alt text](output/xandy.png)
+
+### Xtrain and ytrain:
+![alt text](<output/xtestand ytest.png>)
 
 ## RESULT:
 Thus, Implementation of Data Preprocessing is done in python  using a data set downloaded from Kaggle.
